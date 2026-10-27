@@ -55,6 +55,18 @@ window.addEventListener('DOMContentLoaded', event => {
     document.addEventListener('scroll', updateActiveLink, { passive: true });
     window.addEventListener('resize', updateActiveLink);
 
+    // Swap the older projects button label when the section opens/closes
+    const olderProjects = document.getElementById('olderProjects');
+    const olderProjectsToggle = document.getElementById('olderProjectsToggle');
+    if (olderProjects && olderProjectsToggle) {
+        olderProjects.addEventListener('show.bs.collapse', () => {
+            olderProjectsToggle.textContent = 'Hide older projects';
+        });
+        olderProjects.addEventListener('hide.bs.collapse', () => {
+            olderProjectsToggle.textContent = 'Show older projects';
+        });
+    }
+
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
     const responsiveNavItems = [].slice.call(
