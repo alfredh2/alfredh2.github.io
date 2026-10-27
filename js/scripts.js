@@ -29,14 +29,31 @@ window.addEventListener('DOMContentLoaded', event => {
     // Shrink the navbar when page is scrolled
     document.addEventListener('scroll', navbarShrink);
 
-    // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            rootMargin: '0px 0px -40%',
+    // Highlight the nav link for the section currently in view (works scrolling up and down)
+    const navLinks = [].slice.call(document.querySelectorAll('#mainNav .nav-link'));
+    const spySections = navLinks
+        .map(link => ({ link, section: document.querySelector(link.getAttribute('href')) }))
+        .filter(item => item.section);
+
+    var updateActiveLink = function () {
+        // A section is "current" once its top passes 40% down from the top of the viewport
+        const marker = window.scrollY + window.innerHeight * 0.4;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        let current = null;
+        spySections.forEach(item => {
+            if (item.section.offsetTop <= marker) {
+                current = item;
+            }
         });
+        if (atBottom && spySections.length) {
+            current = spySections[spySections.length - 1];
+        }
+        spySections.forEach(item => item.link.classList.toggle('active', item === current));
     };
+
+    updateActiveLink();
+    document.addEventListener('scroll', updateActiveLink, { passive: true });
+    window.addEventListener('resize', updateActiveLink);
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');

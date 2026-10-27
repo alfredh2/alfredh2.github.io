@@ -11349,3 +11349,107 @@ body {
   color: teal;
   font-size: 24rem;
 }
+/* Experiences timeline */
+.experience-section {
+  padding: 100px 0;
+  background-color: #fff;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto 0;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7px;
+  width: 2px;
+  background-color: #dee2e6;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  --accent: #64a19d;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-education { --accent: #7464a1; }
+.timeline-research { --accent: #e4c662; }
+
+.timeline-marker {
+  position: absolute;
+  top: 1.4rem;
+  left: calc(-2rem + 1px);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid var(--accent);
+}
+
+.timeline-card {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+}
+
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-tag {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeline-research .timeline-tag {
+  color: #212529;
+}
+
+.timeline-gpa {
+  font-weight: 700;
+}
+
+.timeline-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.timeline-org {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.95rem;
+}
+
+.timeline-list li + li {
+  margin-top: 0.4rem;
+}
